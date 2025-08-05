@@ -1,10 +1,8 @@
 import os
 
-import pandas as pd
-
 from analysis.backtest import backtest_portfolio
 from analysis.plot import plot_backtest_results
-from analysis.price import get_price_series
+from analysis.price import get_multiple_price_series, get_price_series
 from analysis.utils import rebase
 from api import get_portfolio_historical_weights
 
@@ -22,11 +20,14 @@ portfolio_historical_weights = get_portfolio_historical_weights(
     end_date,
     smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio
 )
-underlying = pd.DataFrame(
-    {
-        underlying: get_price_series(underlying, start_date, end_date)
-        for underlying in portfolio_historical_weights.columns
-    },
+# underlying = pd.DataFrame(
+#     {
+#         underlying: get_price_series(underlying, start_date, end_date)
+#         for underlying in portfolio_historical_weights.columns
+#     },
+# )
+underlying = get_multiple_price_series(
+    portfolio_historical_weights.columns, start_date, end_date
 )
 
 if benchmark_ticker in underlying.columns:

@@ -3,6 +3,7 @@ from datetime import datetime
 
 import pandas as pd
 import requests
+from finml_utils import pmap
 
 
 def _fetch(
@@ -81,4 +82,21 @@ def get_price_series(
     return price_series[start_date:end_date].rename(ticker)
 
 
-# all = fetch_price_binance("BTCUSDT")
+def get_multiple_price_series(
+    tickers: list[str],
+    start_date: str | None = None,
+    end_date: str | None = None,
+) -> pd.DataFrame:
+    """
+    Fetch the price series from the Unravel API.
+
+    Args:
+        ticker (list[str]): The cryptocurrency ticker symbols (e.g., ['BTC', 'ETH'])
+        start_date (str | None): Start date in 'YYYY-MM-DD' format
+        end_date (str | None): End date in 'YYYY-MM-DD' format
+
+    Returns:
+        pd.DataFrame: Time series of the risk signal with datetime index
+    """
+    results = pmap(get_price_series, tickers, n_jobs=-1)
+    return pd.DataFrame(results)[start_date:end_date]
