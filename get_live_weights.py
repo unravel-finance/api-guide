@@ -1,3 +1,4 @@
+# %%
 from analysis.utils import get_env
 
 from api import get_live_weights

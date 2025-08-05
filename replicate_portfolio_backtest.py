@@ -1,8 +1,9 @@
+#%%
 from analysis.utils import get_env
 
 from analysis.backtest import backtest_portfolio
 from analysis.plot import plot_backtest_results
-from analysis.price import get_price_data, get_price_series
+from analysis.price import get_price_data
 from analysis.utils import rebase
 from api import get_portfolio_historical_weights
 
@@ -28,11 +29,11 @@ underlying = get_price_data(
 if benchmark_ticker in underlying.columns:
     benchmark = underlying[benchmark_ticker]
 else:
-    benchmark = get_price_series(
-        benchmark_ticker,
+    benchmark = get_price_data(
+        [benchmark_ticker],
         start_date,
         end_date,
-    )
+    )[benchmark_ticker]
 
 underlying_returns = underlying.pct_change()
 portfolio_returns, _ = backtest_portfolio(
@@ -45,3 +46,5 @@ portfolio_cumulative_returns = (1 + portfolio_returns).cumprod()
 plot_backtest_results(
     rebase(portfolio_cumulative_returns), rebase(benchmark), portfolio
 )
+
+# %%
