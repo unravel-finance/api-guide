@@ -1,8 +1,8 @@
-from finml_utils import get_env
+from analysis.utils import get_env
 
 from analysis.backtest import backtest_portfolio
 from analysis.plot import plot_backtest_results
-from analysis.price import get_multiple_price_series, get_price_series
+from analysis.price import get_price_data, get_price_series
 from analysis.utils import rebase
 from api import get_portfolio_historical_weights
 
@@ -21,7 +21,7 @@ portfolio_historical_weights = get_portfolio_historical_weights(
     smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio (https://unravel.finance/home/api/catalog/portfolios)
 )
 
-underlying = get_multiple_price_series(
+underlying = get_price_data(
     portfolio_historical_weights.columns, start_date, end_date
 )
 

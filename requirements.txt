@@ -2,4 +2,4 @@ matplotlib
 pandas
 requests
 alphalens-reloaded
-finml-utils
+joblib
