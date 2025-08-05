@@ -3,3 +3,4 @@ pandas
 requests
 alphalens-reloaded
 joblib
+python-dotenv
