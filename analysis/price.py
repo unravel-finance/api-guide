@@ -99,4 +99,4 @@ def get_multiple_price_series(
         pd.DataFrame: Time series of the risk signal with datetime index
     """
     results = pmap(get_price_series, tickers, n_jobs=-1)
-    return pd.DataFrame(results)[start_date:end_date]
+    return pd.DataFrame(results).T[start_date:end_date]
