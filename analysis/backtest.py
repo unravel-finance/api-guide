@@ -1,20 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
-
 import pandas as pd
-
-
-@dataclass
-class PortfolioBacktestResult:
-    portfolio_returns: pd.Series
-    component_returns: pd.DataFrame
-
-    def split(self, start_date, end_date) -> PortfolioBacktestResult:
-        return PortfolioBacktestResult(
-            portfolio_returns=self.portfolio_returns[start_date:end_date],
-            component_returns=self.component_returns[start_date:end_date],
-        )
 
 
 def backtest_portfolio(
@@ -22,7 +8,7 @@ def backtest_portfolio(
     underlying: pd.DataFrame,
     transaction_cost: float,
     lag: int,
-) -> PortfolioBacktestResult:
+) -> tuple[pd.Series, pd.DataFrame]:
     """
     Create a vectorized backtest from a portfolio of weights and the underlying returns.
 
@@ -47,10 +33,7 @@ def backtest_portfolio(
     returns = (underlying * weights.shift(1 + lag)) - costs
     portfolio_returns = returns.sum(axis="columns")
 
-    return PortfolioBacktestResult(
-        portfolio_returns=portfolio_returns,
-        component_returns=returns,
-    )
+    return portfolio_returns, returns
 
 
 def backtest_factor(

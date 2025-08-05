@@ -35,13 +35,13 @@ else:
     )
 
 underlying_returns = underlying.pct_change()
-results = backtest_portfolio(
+portfolio_returns, _ = backtest_portfolio(
     weights=portfolio_historical_weights,
     underlying=underlying_returns,
     transaction_cost=0.001,
     lag=0,
 )
-portfolio_cumulative_returns = (1 + results.portfolio_returns).cumprod()
+portfolio_cumulative_returns = (1 + portfolio_returns).cumprod()
 plot_backtest_results(
     rebase(portfolio_cumulative_returns), rebase(benchmark), portfolio
 )
