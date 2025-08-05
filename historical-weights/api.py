@@ -1,5 +1,6 @@
 import pandas as pd
 import requests
+import datetime
 
 BASEAPI = "https://unravel.finance/api/v1"
 
@@ -42,19 +43,16 @@ def get_portfolio_historical_weights(
 
 
 def get_price_series(
-    ticker: str,
-    API_KEY: str,
-    start_date: str | None = None,
-    end_date: str | None = None,
+    ticker: str, start_date: str, end_date: str, API_KEY: str
 ) -> pd.Series:
     """
     Fetch the price series from the Unravel API.
 
     Args:
         ticker (str): The cryptocurrency ticker symbol (e.g., 'BTC')
+        start_date (str): Start date in 'YYYY-MM-DD' format
+        end_date (str): End date in 'YYYY-MM-DD' format
         API_KEY (str): The API key to use for the request
-        start_date (str | None): Start date in 'YYYY-MM-DD' format
-        end_date (str | None): End date in 'YYYY-MM-DD' format
 
     Returns:
         pd.Series: Time series of the risk signal with datetime index

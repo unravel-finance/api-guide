@@ -1,8 +1,8 @@
-import pandas as pd
 from api import get_portfolio_historical_weights, get_price_series
+import pandas as pd
+from utils import rebase
 from backtest import backtest_portfolio
 from plot import plot_backtest_results
-from utils import rebase
 
 UNRAVEL_API_KEY = "DEMO-KEY"
 portfolio = "beta"
@@ -16,7 +16,7 @@ portfolio_historical_weights = get_portfolio_historical_weights(
 )
 underlying = pd.DataFrame(
     {
-        underlying: get_price_series(underlying, UNRAVEL_API_KEY, start_date, end_date)
+        underlying: get_price_series(underlying, start_date, end_date, UNRAVEL_API_KEY)
         for underlying in portfolio_historical_weights.columns
     },
 )
@@ -25,10 +25,7 @@ if benchmark_ticker in underlying.columns:
     benchmark = underlying[benchmark_ticker]
 else:
     benchmark = get_price_series(
-        benchmark_ticker,
-        UNRAVEL_API_KEY,
-        start_date,
-        end_date,
+        benchmark_ticker, start_date, end_date, UNRAVEL_API_KEY
     )
 
 underlying_returns = underlying.pct_change()
