@@ -18,7 +18,7 @@ portfolio_historical_weights = get_portfolio_historical_weights(
     UNRAVEL_API_KEY,
     start_date,
     end_date,
-    smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio
+    smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio (https://unravel.finance/home/api/catalog/portfolios)
 )
 
 underlying = get_multiple_price_series(

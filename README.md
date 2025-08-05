@@ -33,7 +33,7 @@ This repository provides transparent, easy-to-understand code examples for:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/unravel-finance/api-snippets.git
 cd api-snippets
 
 # Install dependencies
