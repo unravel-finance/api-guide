@@ -81,7 +81,9 @@ get_live_weights.ipynb
 Analyze portfolio factors:
 
 ```bash
-factor_analysis.ipynb
+factor_analysis_altair.ipynb
+factor_analysis_carry_enhanced.ipynb
+factor_analysis_retail_flow.ipynb
 ```
 
 

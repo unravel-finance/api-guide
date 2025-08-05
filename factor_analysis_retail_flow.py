@@ -17,7 +17,7 @@ historical_factors = get_portfolio_factors_historical(
 
 underlying = get_price_data(available_tickers)
 
-
-factor_analysis(historical_factors.loc[:, underlying.columns], underlying)
+columns_intersection = historical_factors.columns.intersection(underlying.columns)
+factor_analysis(historical_factors[columns_intersection], underlying)
 
 # %%
