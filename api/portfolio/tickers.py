@@ -15,6 +15,7 @@ def get_tickers(portfolioId: str, API_KEY: str, universe_size: int | str) -> lis
     Returns:
         pd.Series: Time series of the risk signal with datetime index
     """
+
     url = f"{BASEAPI}/portfolio/tickers"
     params = {"id": portfolioId, "universe_size": universe_size}
     headers = {"X-API-KEY": API_KEY}
