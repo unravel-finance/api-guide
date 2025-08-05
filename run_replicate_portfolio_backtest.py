@@ -20,12 +20,7 @@ portfolio_historical_weights = get_portfolio_historical_weights(
     end_date,
     smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio
 )
-# underlying = pd.DataFrame(
-#     {
-#         underlying: get_price_series(underlying, start_date, end_date)
-#         for underlying in portfolio_historical_weights.columns
-#     },
-# )
+
 underlying = get_multiple_price_series(
     portfolio_historical_weights.columns, start_date, end_date
 )
