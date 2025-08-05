@@ -3,19 +3,22 @@ import requests
 from api.constants import BASEAPI
 
 
-def get_tickers(portfolioId: str, API_KEY: str) -> list[str]:
+def get_tickers(
+    portfolioId: str, API_KEY: str, universe_size: int | None = None
+) -> list[str]:
     """
     Fetch the tickers for a portfolio from the Unravel API.
 
     Args:
         portfolioId (str): The portfolio ID
         API_KEY (str): The API key to use for the request
+        universe_size (int | None): The universe size to use for the request. If None, the default universe size will be used, please see catalog for default values for each portfolio.
 
     Returns:
         pd.Series: Time series of the risk signal with datetime index
     """
     url = f"{BASEAPI}/portfolio/tickers"
-    params = {"id": portfolioId, "universe_size": "20"}
+    params = {"id": portfolioId, "universe_size": universe_size}
     headers = {"X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers, params=params)
     assert (
