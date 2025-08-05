@@ -8,7 +8,7 @@
       "name": "Get Portfolio Factors Historical",
       "type": "debugpy",
       "request": "launch",
-      "module": "portfolio.factors.main",
+      "module": "factors.main",
       "justMyCode": true,
       "args": [
         "momentum_enhanced"
