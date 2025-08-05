@@ -1,14 +1,14 @@
 # %%
-import os
 
 import pandas as pd
+from finml_utils import get_env
 
 from analysis.alphalens import simplified_factor_analysis
 from analysis.price import get_price_series
 from api.portfolio.factors import get_portfolio_factors_historical
 from api.portfolio.tickers import get_tickers
 
-UNRAVEL_API_KEY = os.environ.get("UNRAVEL_API_KEY")
+UNRAVEL_API_KEY = get_env("UNRAVEL_API_KEY")
 portfolio = "momentum_enhanced"
 available_tickers = get_tickers(portfolio, UNRAVEL_API_KEY)
 historical_factors = get_portfolio_factors_historical(

@@ -1,4 +1,4 @@
-import os
+from finml_utils import get_env
 
 from analysis.backtest import backtest_portfolio
 from analysis.plot import plot_backtest_results
@@ -6,7 +6,7 @@ from analysis.price import get_multiple_price_series, get_price_series
 from analysis.utils import rebase
 from api import get_portfolio_historical_weights
 
-UNRAVEL_API_KEY = os.environ.get("UNRAVEL_API_KEY")
+UNRAVEL_API_KEY = get_env("UNRAVEL_API_KEY")
 portfolio = "beta.5"
 start_date = "2022-01-01"
 end_date = "2024-06-01"
