@@ -3,8 +3,10 @@ import os
 
 import pandas as pd
 
-from factors.alphalens import simplified_factor_analysis
-from factors.api import get_portfolio_factors_historical, get_price_series, get_tickers
+from analysis.alphalens import simplified_factor_analysis
+from api.portfolio.factors import get_portfolio_factors_historical
+from api.portfolio.tickers import get_tickers
+from api.price import get_price_series
 
 UNRAVEL_API_KEY = os.environ.get("UNRAVEL_API_KEY")
 portfolio = "momentum_enhanced"
@@ -22,5 +24,3 @@ underlying = pd.DataFrame(
 
 
 simplified_factor_analysis(historical_factors, underlying)
-
-# %%

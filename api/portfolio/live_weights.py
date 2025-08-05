@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
 
-BASEAPI = "https://unravel.finance/api/v1"
+from api.constants import BASEAPI
 
 
 def get_live_weights(portfolio: str, API_KEY: str) -> pd.Series:

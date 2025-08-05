@@ -1,6 +1,8 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-from utils import to_drawdown
+import pandas as pd
+
+from .utils import to_drawdown
+
 
 def plot_backtest_results(
     cumulative_returns: pd.Series,
