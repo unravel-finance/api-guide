@@ -10,7 +10,7 @@ def get_normalized_series(
     API_KEY: str,
     start_date: str | None = None,
     end_date: str | None = None,
-    smoothing: int | None = None,
+    smoothing: int | str | None = None,
 ) -> pd.Series:
     """
     Fetch normalized risk signal data from the Unravel API.

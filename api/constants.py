@@ -1,1 +1,2 @@
-BASEAPI = "https://unravel.finance/api/v1"
+WEBSITE = "https://unravel.finance"
+BASEAPI = f"{WEBSITE}/api/v1"
