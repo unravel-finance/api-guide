@@ -3,7 +3,7 @@ from datetime import datetime
 
 import pandas as pd
 import requests
-from finml_utils import pmap
+from finml_utils import filter_none, pmap
 
 
 def _fetch(
@@ -78,8 +78,10 @@ def get_price_series(
     Returns:
         pd.Series: Time series of the risk signal with datetime index
     """
+
     price_series = fetch_price_binance(f"{ticker}USDT")
-    return price_series[start_date:end_date].rename(ticker)
+
+    return price_series[start_date:end_date].squeeze().rename(ticker)
 
 
 def get_multiple_price_series(
@@ -98,5 +100,17 @@ def get_multiple_price_series(
     Returns:
         pd.DataFrame: Time series of the risk signal with datetime index
     """
-    results = pmap(get_price_series, tickers, n_jobs=-1)
-    return pd.DataFrame(results).T[start_date:end_date]
+
+    def safe_single_price_series(t: str):
+        try:
+            price_series = get_price_series(t, start_date, end_date)
+            if price_series.empty:
+                print(f"Empty price series for {t}")
+                return None
+            return price_series
+        except Exception:
+            print(f"Error fetching price series for {t}")
+            return None
+
+    results = pmap(safe_single_price_series, tickers, n_jobs=-1)
+    return pd.concat(filter_none(results), axis="columns")[start_date:end_date]
