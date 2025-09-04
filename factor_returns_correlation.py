@@ -19,7 +19,10 @@ portfolios = [
 ]
 
 returns_df = pd.DataFrame(
-    [get_portfolio_returns(portfolio, UNRAVEL_API_KEY) for portfolio in portfolios]
+    {
+        portfolio: get_portfolio_returns(portfolio, UNRAVEL_API_KEY)
+        for portfolio in portfolios
+    }
 )
 
 # %%
