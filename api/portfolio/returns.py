@@ -23,7 +23,7 @@ def get_portfolio_returns(
     Returns:
         pd.Series: Portfolio returns data
     """
-    url = f"{BASEAPI}/portfolio/factors-returns"
+    url = f"{BASEAPI}/portfolio/returns"
     params = {"portfolio": portfolioId}
     if start_date:
         params["start_date"] = start_date
