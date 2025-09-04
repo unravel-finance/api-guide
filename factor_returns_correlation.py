@@ -9,14 +9,18 @@ from api.portfolio.returns import get_portfolio_returns
 
 UNRAVEL_API_KEY = get_env("UNRAVEL_API_KEY")
 
-portfolios = ["momentum_enhanced.40", "carry_enhanced.40"]
-returns_data = {}
+portfolios = [
+    "momentum_enhanced.40",
+    "carry_enhanced.40",
+    "retail_flow.40",
+    "altair.40",
+    "open_interest_divergence.40",
+    "relative_illiquidity.40",
+]
 
-for portfolio in portfolios:
-    returns = get_portfolio_returns(portfolio, UNRAVEL_API_KEY)
-    returns_data[portfolio] = returns
-
-returns_df = pd.DataFrame(returns_data)
+returns_df = pd.DataFrame(
+    [get_portfolio_returns(portfolio, UNRAVEL_API_KEY) for portfolio in portfolios]
+)
 
 # %%
 
@@ -32,7 +36,7 @@ sns.heatmap(
     fmt=".3f",
     cbar_kws={"shrink": 0.8},
 )
-plt.title("Factor Portfolio Returns Correlation Matrix")
+plt.title("Cross-Sectional Returns Correlation Matrix")
 plt.tight_layout()
 plt.show()
 
@@ -50,4 +54,3 @@ print(
 print(f"Volatility carry_enhanced.40: {returns_df['carry_enhanced.40'].std():.4f}")
 
 # %%
-
