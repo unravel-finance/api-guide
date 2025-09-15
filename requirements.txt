@@ -1,6 +1,8 @@
+unravel-client
 matplotlib
 pandas
 requests
 alphalens-reloaded
 joblib
 python-dotenv
+jupytext

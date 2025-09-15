@@ -3,9 +3,9 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from unravel_client import get_portfolio_returns
 
 from analysis.utils import get_env
-from api.portfolio.returns import get_portfolio_returns
 
 UNRAVEL_API_KEY = get_env("UNRAVEL_API_KEY")
 

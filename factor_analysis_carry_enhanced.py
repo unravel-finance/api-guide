@@ -1,11 +1,10 @@
 # %%
 
-from analysis.utils import get_env
+from unravel_client import get_portfolio_factors_historical, get_tickers
 
 from analysis.alphalens import factor_analysis
 from analysis.price import get_price_data
-from api.portfolio.factors import get_portfolio_factors_historical
-from api.portfolio.tickers import get_tickers
+from analysis.utils import get_env
 
 UNRAVEL_API_KEY = get_env("UNRAVEL_API_KEY")
 portfolio = "carry_enhanced"

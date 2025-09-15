@@ -1,11 +1,10 @@
-#%%
-from analysis.utils import get_env
+# %%
+from unravel_client import get_portfolio_historical_weights
 
 from analysis.backtest import backtest_portfolio
 from analysis.plot import plot_backtest_results
 from analysis.price import get_price_data
-from analysis.utils import rebase
-from api import get_portfolio_historical_weights
+from analysis.utils import get_env, rebase
 
 UNRAVEL_API_KEY = get_env("UNRAVEL_API_KEY")
 portfolio = "quarta.40"
@@ -22,9 +21,7 @@ portfolio_historical_weights = get_portfolio_historical_weights(
     smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio (https://unravel.finance/home/api/catalog/portfolios)
 )
 
-underlying = get_price_data(
-    portfolio_historical_weights.columns, start_date, end_date
-)
+underlying = get_price_data(portfolio_historical_weights.columns, start_date, end_date)
 
 if benchmark_ticker in underlying.columns:
     benchmark = underlying[benchmark_ticker]
