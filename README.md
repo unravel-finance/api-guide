@@ -75,25 +75,14 @@ echo "UNRAVEL_API_KEY=your_api_key_here" > .env
 
 ## Quick Start
 
-### 1. Convert Python Scripts to Notebooks
-
-The repository includes Python scripts that can be run directly or converted to Jupyter notebooks. To convert them:
-
-```bash
-python convert_to_notebooks.py
-```
-
-This will create `.ipynb` files for all Python scripts in the root directory. The conversion uses `jupytext` to maintain proper notebook structure.
-
-**Note**: The Python scripts now use the `unravel-client` package instead of the local `api` folder. Make sure to install the package before running the scripts.
+The Python scripts use the `unravel-client` package. Make sure to install the package before running the scripts.
 
 ### 2. Portfolio Backtesting
 
 Run the complete portfolio backtesting example:
 
 ```bash
-python replicate_portfolio_backtest.py
-# or after conversion:
+
 jupyter notebook replicate_portfolio_backtest.ipynb
 ```
 
@@ -109,8 +98,6 @@ This script demonstrates:
 Get current portfolio allocations:
 
 ```bash
-python get_live_weights.py
-# or after conversion:
 jupyter notebook get_live_weights.ipynb
 ```
 
@@ -119,10 +106,6 @@ jupyter notebook get_live_weights.ipynb
 Analyze portfolio factors:
 
 ```bash
-python factor_analysis_altair.py
-python factor_analysis_carry_enhanced.py
-python factor_analysis_retail_flow.py
-# or after conversion:
 jupyter notebook factor_analysis_altair.ipynb
 jupyter notebook factor_analysis_carry_enhanced.ipynb
 jupyter notebook factor_analysis_retail_flow.ipynb
@@ -133,35 +116,12 @@ jupyter notebook factor_analysis_retail_flow.ipynb
 Analyze correlations between portfolio returns:
 
 ```bash
-python factor_returns_correlation.py
-# or after conversion:
 jupyter notebook factor_returns_correlation.ipynb
 ```
 
 ## Available Portfolios
 
-The scripts demonstrate various Unravel portfolios:
-
-- **`altair`**: Altair portfolio with 40 assets
-- **`carry_enhanced`**: Carry Enhanced portfolio with 40 assets
-- **`retail_flow`**: Retail Flow portfolio with 30 assets
-- **`beta.5`**: Beta portfolio with 5 assets
-- **`quarta.40`**: Quarta portfolio with 40 assets
-- **`momentum_enhanced.40`**: Momentum Enhanced portfolio with 40 assets
-- **`open_interest_divergence.40`**: Open Interest Divergence portfolio with 40 assets
-- **`relative_illiquidity.40`**: Relative Illiquidity portfolio with 40 assets
-
-For a complete list of available portfolios and their parameters, visit the [Unravel API Catalog](https://unravel.finance/home/api/catalog/portfolios).
-
-## Migration from Local API
-
-This repository has been updated to use the published `unravel-client` package instead of the local `api` folder. The interface remains the same, but you now need to install the package:
-
-```bash
-pip install unravel-client
-```
-
-The local `api` folder will be removed in future versions.
+For a complete list of available portfolios and their parameters, visit [Unravel Portfolios](https://unravel.finance/portfolios).
 
 ## License
 
