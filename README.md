@@ -1,6 +1,6 @@
 # Unravel API Snippets
 
-Simple Python snippets to get started with the Unravel API for portfolio backtesting and live weight retrieval. These scripts can be converted to Jupyter notebooks using the included conversion script.
+Simple Python snippets to get started with the Unravel API for portfolio backtesting and live weight retrieval.
 
 ## Purpose
 
@@ -14,7 +14,10 @@ This repository provides transparent, easy-to-understand code examples for:
 
 ### 📊 Portfolio Backtesting
 
-- **`replicate_portfolio_backtest.py`**: Complete backtesting implementation with transaction costs, historical portfolio weights retrieval, and performance visualization
+- **`replicate_portfolio_backtest.py`**
+- Transparent backtesting implementation with transaction costs
+- Historical portfolio weights retrieval
+- Performance visualization
 
 ### ⚡ Live Portfolio Data
 
@@ -22,6 +25,8 @@ This repository provides transparent, easy-to-understand code examples for:
 
 ### 🔍 Factor Analysis
 
+- Basic factor analysis using AlphaLens
+- Portfolio factor historical data
 - **`factor_analysis_altair.py`**: Factor analysis for the Altair portfolio using AlphaLens
 - **`factor_analysis_carry_enhanced.py`**: Factor analysis for the Carry Enhanced portfolio
 - **`factor_analysis_retail_flow.py`**: Factor analysis for the Retail Flow portfolio
