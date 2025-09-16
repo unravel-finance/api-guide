@@ -14,7 +14,7 @@ benchmark_ticker = "BTC"
 
 
 portfolio_historical_weights = get_portfolio_historical_weights(
-    portfolio=portfolio,
+    id=portfolio,
     api_key=UNRAVEL_API_KEY,
     smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio (https://unravel.finance/home/api/catalog/portfolios)
     start_date=start_date,
