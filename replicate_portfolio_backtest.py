@@ -14,22 +14,26 @@ benchmark_ticker = "BTC"
 
 
 portfolio_historical_weights = get_portfolio_historical_weights(
-    portfolio,
-    UNRAVEL_API_KEY,
-    start_date,
-    end_date,
+    portfolio=portfolio,
+    api_key=UNRAVEL_API_KEY,
     smoothing=None,  # This will use the default smoothing please see catalog for default values for each portfolio (https://unravel.finance/home/api/catalog/portfolios)
+    start_date=start_date,
+    end_date=end_date,
 )
 
-underlying = get_price_data(portfolio_historical_weights.columns, start_date, end_date)
+underlying = get_price_data(
+    tickers=portfolio_historical_weights.columns,
+    start_date=start_date,
+    end_date=end_date,
+)
 
 if benchmark_ticker in underlying.columns:
     benchmark = underlying[benchmark_ticker]
 else:
     benchmark = get_price_data(
-        [benchmark_ticker],
-        start_date,
-        end_date,
+        tickers=[benchmark_ticker],
+        start_date=start_date,
+        end_date=end_date,
     )[benchmark_ticker]
 
 underlying_returns = underlying.pct_change()
